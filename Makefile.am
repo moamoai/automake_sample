@@ -1,3 +1,3 @@
 
-# ソースファイルの入っているサブディレクトリの指定
-SUBDIRS = ./
+SUBDIRS = src #サブソースディレクトリ
+DIST_SUBDIRS = $(SUBDIRS)

@@ -1,32 +1,13 @@
-# 作成する実行可能ファイルの名前
-bin_PROGRAMS = test
+SUBDIRS = lib #サブソースディレクトリ
 
-# Cコンパイラへ渡すオプション(ここではコメントアウトしています)
-# test_CFLAGS = -g
+bin_PROGRAMS = program #実行ファイル名
 
-# C++コンパイラへ渡すオプション
-test_CXXFLAGS = -g
+# 静的ライブラリのリンク
+program_LDFLAGS = -L./lib
+program_LDADD = -llib_test
 
-# 使用しているライブラリ(ここではコメントアウトしています)
-# test_LDADD = -lm
+program_CFLAGS =  -I ./lib
 
-# test生成に必要なソースコード
-test_SOURCES = hello.c
+program_DEPENDENCIES = ./lib/liblib_test.a
 
-
-### 以下はライブラリを作成する際の設定(オプション)
-
-# インストールするヘッダファイル
-include_HEADERS = # book.h
-
-# インストールする際のライブラリ名
-lib_LIBRARIES = libbook.a
-
-# Cコンパイラへ渡すオプション(ここではコメントアウトしています)
-# libbook_a_CFLAGS = -g
-
-# C++コンパイラへ渡すオプション
-libbook_a_CXXFLAGS = -g
-
-# ライブラリ生成に必要なソースコード
-libbook_a_SOURCES = hello.c # book.h book.cpp
+program_SOURCES = main.c
